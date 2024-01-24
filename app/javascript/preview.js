@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
   const fileField = document.querySelector('input[type="file"][name="post[image]"]');
   fileField.addEventListener('change', function(e){
-    console.log("input要素での値の変化が起きました");
-    console.log(e.target.files[0]);
+    const alreadyPreview = document.querySelector('.preview');
+    if (alreadyPreview){
+      alreadyPreview.remove();
+    };
     const file = e.target.files[0];
     const blob = window.URL.createObjectURL(file);
     
