@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const previewList = document.getElementById('previews');
   if (!postForm)return null;
 
-  const fileField = document.querySelector('input[type="file"][name="post[image]"]');
+  const fileField = document.querySelector('input[type="file"][name="post[images][]"]');
   fileField.addEventListener('change', function(e){
     const alreadyPreview = document.querySelector('.preview');
     if (alreadyPreview){
@@ -21,5 +21,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
     previewWrapper.appendChild(previewImage);
     previewList.appendChild(previewWrapper);
+
+    const newFileField = document.createElement('input');
+    newFileField.setAttribute('type', 'file');
+    newFileField.setAttribute('name', 'post[images][]');
+
+    const fileFieldArea = document.querySelector('.click-upload');
+    fileFieldArea.appendChild(newFileField);
     })
 });
